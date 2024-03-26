@@ -1,0 +1,2 @@
+require('gen').setup({
+})

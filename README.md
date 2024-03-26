@@ -1,2 +1,1 @@
 # ruxy.nvim
-# ruxy.nvim
