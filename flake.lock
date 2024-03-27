@@ -17,6 +17,22 @@
         "type": "indirect"
       }
     },
+    "gen": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711107907,
+        "narHash": "sha256-BWif/mumMGqdXtDKSTerKZcsfU811VwgH+7AOuk1l+A=",
+        "owner": "David-Kunz",
+        "repo": "gen.nvim",
+        "rev": "46ab810130097494bbcf12b1426a7166f4c2995e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "David-Kunz",
+        "repo": "gen.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1711333969,
@@ -54,6 +70,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "gen": "gen",
         "nixpkgs": "nixpkgs"
       }
     }

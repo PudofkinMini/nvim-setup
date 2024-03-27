@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    gen = {
+      flake = false;
+      url = "github:David-Kunz/gen.nvim";
+    };
   };
 
   outputs = inputs @ { self, flake-parts, nixpkgs, ... }:
@@ -31,7 +35,7 @@
 
       devShells = {
         default = mkShell {
-          buildInputs = [];
+          buildInputs = [  ];
         };
       };
 

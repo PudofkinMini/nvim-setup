@@ -3,10 +3,6 @@ local omnisharp_extended = require 'omnisharp_extended'
 local rust_tools = require 'rust-tools'
 local treesitter = require 'nvim-treesitter.configs'
 local treesitter_context = require 'treesitter-context'
-local mason = require 'mason'
-local mason_lsp = require 'mason-lspconfig'
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
 
 local custom_format = function()
     if vim.bo.filetype == "templ" then
@@ -226,40 +222,7 @@ local function init()
     }
 
     treesitter_context.setup()
-    cmp.setup({
-        completetion = {
-            completeopt = "menu,menuone,preview,noselect",
-        },
-        snippet = {
-            -- REQUIRED - you must specify a snippet engine
-            expand = function(args)
-                luasnip.lsp_expand(args.body) -- For `luasnip` users.
-            end,
-        },
-        mapping = cmp.mapping.preset.insert({
-            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        }),
-        sources = cmp.config.sources({
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' }, -- For luasnip users.
-        }, {
-                { name = 'buffer' },
-            })
-    })
-    luasnip.setup() 
 
-    mason.setup()
-    mason_lsp.setup({
-    ensure_installed = {
-        "gopls",
-        },
-    automatic_installation = true,
-    }
-    )
 end
 
 return {

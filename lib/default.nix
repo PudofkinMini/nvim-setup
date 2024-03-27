@@ -1,6 +1,15 @@
 {inputs}: let
   inherit (inputs.nixpkgs) legacyPackages;
 in rec {
+  mkGen = {system}: let
+    inherit (pkgs) vimUtils;
+    inherit (vimUtils) buildVimPlugin;
+    pkgs = legacyPackages.${system};
+  in
+    buildVimPlugin {
+      name = "Gen";
+      src = inputs.gen;
+    };
   mkVimPlugin = {system}: let
     inherit (pkgs) vimUtils;
     inherit (vimUtils) buildVimPlugin;
@@ -22,9 +31,11 @@ in rec {
 
   mkNeovimPlugins = {system}: let
     inherit (pkgs) vimPlugins;
+    Gen-nvim = mkGen {inherit system;};
     pkgs = legacyPackages.${system};
     ruxy-nvim = mkVimPlugin {inherit system;};
   in [
+    pkgs.curl 
     # languages
     vimPlugins.nvim-lspconfig
     vimPlugins.nvim-treesitter.withAllGrammars
@@ -42,6 +53,7 @@ in rec {
     vimPlugins.vim-floaterm
 
     # extras
+    Gen-nvim
     vimPlugins.gitsigns-nvim
     vimPlugins.lualine-nvim
     vimPlugins.noice-nvim
@@ -103,7 +115,7 @@ in rec {
 
   mkExtraConfig = ''
     lua << EOF
-      require 'rxuy'.init()
+      require 'ruxy'.init()
     EOF
   '';
 
