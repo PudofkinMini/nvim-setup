@@ -9,7 +9,7 @@ local function init()
 	gen.setup(
         {
                 "David-Kunz/gen.nvim",
-        model = "mistral", -- The default model to use.
+        model = "pxlksr/opencodeinterpreter-ds", -- The default model to use.
         host = "192.168.1.41", -- The host running the Ollama service.
         port = "11434", -- The port on which the Ollama service is listening.
         quit_map = "q", -- set keymap for close the response window
