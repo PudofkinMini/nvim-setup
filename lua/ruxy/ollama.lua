@@ -1,4 +1,4 @@
-local gen = require "gen"
+local gen = require 'gen'
 
 local function set_keymap()
     vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
@@ -8,6 +8,7 @@ local function init()
 	set_keymap()
 	gen.setup(
         {
+                "David-Kunz/gen.nvim",
         model = "mistral", -- The default model to use.
         host = "192.168.1.41", -- The host running the Ollama service.
         port = "11434", -- The port on which the Ollama service is listening.
@@ -16,7 +17,7 @@ local function init()
         init = function(options) end,
         -- Function to initialize Ollama
         command = function(options)
-            local body = {model = opts.model, stream = true}
+            local body = {model = options.model, stream = true}
             return "curl --silent --no-buffer -X POST http://192.168.1.41:11434/api/chat -d $body"
         end,
         -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
@@ -28,7 +29,7 @@ local function init()
         show_prompt = false, -- Shows the prompt submitted to Ollama.
         show_model = true, -- Displays which model you are using at the beginning of your chat session.
         no_auto_close = false, -- Never closes the window automatically.
-        debug = true -- Prints errors and the command which is run.
+        debug = false -- Prints errors and the command which is run.
 	})
 end
 
