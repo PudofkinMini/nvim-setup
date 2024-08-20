@@ -52,6 +52,9 @@ in rec {
     # floaterm
     vimPlugins.vim-floaterm
 
+    # thanks prime ;)
+    vimPlugins.harpoon2
+
     # extras
     Gen-nvim
     vimPlugins.gitsigns-nvim
@@ -65,6 +68,13 @@ in rec {
     vimPlugins.omnisharp-extended-lsp-nvim
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
+    vimPlugins.catppuccin-nvim
+    vimPlugins.onedarkpro-nvim
+    vimPlugins.neotest
+    vimPlugins.neotest-python
+    vimPlugins.neotest-plenary
+    vimPlugins.neotest-go
+
 
     # configuration
     ruxy-nvim
@@ -81,10 +91,8 @@ in rec {
     nodePackages."bash-language-server"
     nodePackages."diagnostic-languageserver"
     nodePackages."dockerfile-language-server-nodejs"
-    nodePackages."pyright"
     nodePackages."typescript"
     nodePackages."typescript-language-server"
-    nodePackages."vscode-langservers-extracted"
     nodePackages."yaml-language-server"
     ocamlPackages.dune_3
     ocamlPackages.ocaml-lsp

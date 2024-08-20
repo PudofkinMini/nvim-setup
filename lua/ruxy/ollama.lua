@@ -10,7 +10,7 @@ local function init()
         {
                 "David-Kunz/gen.nvim",
         model = "mistral", -- The default model to use.
-        host = "192.168.1.41", -- The host running the Ollama service.
+        host = "192.168.1.43", -- The host running the Ollama service.
         port = "11434", -- The port on which the Ollama service is listening.
         quit_map = "q", -- set keymap for close the response window
         retry_map = "<c-r>", -- set keymap to re-send the current prompt
@@ -18,7 +18,7 @@ local function init()
         -- Function to initialize Ollama
         command = function(options)
             local body = {model = options.model, stream = true}
-            return "curl --silent --no-buffer -X POST http://192.168.1.41:11434/api/chat -d $body"
+            return "curl --silent --no-buffer -X POST http://192.168.1.43:11434/api/chat -d $body"
         end,
         -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
         -- This can also be a command string.
@@ -31,6 +31,18 @@ local function init()
         no_auto_close = false, -- Never closes the window automatically.
         debug = false -- Prints errors and the command which is run.
 	})
+  gen.prompts['Elaborate_Text'] = {
+    prompt = "Elaborate the following text:\n$text",
+    replace = true
+  }
+  gen.prompts['Explain_Code'] = {
+    prompt = "Explain the following code. The filetype is $filetype and I am certian of this, the code is ```$text```",
+  }
+  gen.prompts['Fix_Code'] = {
+    prompt = "Fix the following code. Only ouput the result in format ```$filetype\n...\n```:\n```$filetype\n$text\n```",
+    replace = true,
+    extract = "```$filetype\n(.-)```"
+  }
 end
 
 return {
