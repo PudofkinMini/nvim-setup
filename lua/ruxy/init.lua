@@ -5,8 +5,6 @@ local function init()
   require 'ruxy.remap'.init()
   require 'ruxy.telescope'.init()
   require 'ruxy.neotest'.init()
-  --    require 'ruxy.latex'.init()
-  --    require 'ruxy.harpoon'.init()
   require 'ruxy.ollama'.init()
 end
 return {

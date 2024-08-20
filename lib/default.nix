@@ -36,6 +36,8 @@ in rec {
     ruxy-nvim = mkVimPlugin {inherit system;};
   in [
     pkgs.curl 
+    vimPlugins.onedarkpro-nvim
+    vimPlugins.harpoon
     # languages
     vimPlugins.nvim-lspconfig
     vimPlugins.nvim-treesitter.withAllGrammars
@@ -66,6 +68,7 @@ in rec {
     vimPlugins.nvim-treesitter-context
     vimPlugins.nvim-web-devicons
     vimPlugins.omnisharp-extended-lsp-nvim
+    vimPlugins.catppuccin-nvim
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
     vimPlugins.catppuccin-nvim

@@ -4,6 +4,7 @@ local colorizer = require 'colorizer'
 local gitsigns = require 'gitsigns'
 local lualine = require 'lualine'
 local noice = require 'noice'
+local tokyonight = require 'tokyonight'
 
 local function init()
     onedark.setup({
